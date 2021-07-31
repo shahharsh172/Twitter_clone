@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "id": "t1",
+      "name": "Abc",
+      "twitterHandle": "@abc",
+      "twittedOn": "8s",
+      "text": "",
+      "likes": 3
+    }
+  ]
+}

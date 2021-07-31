@@ -1,0 +1,15 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.tweet {
+  width: 300px;
+  padding: 15px;
+  border: 1px solid lightgrey;
+  display: flex;
+}
+
+.pd {
+  padding-right: 10px;
+}
