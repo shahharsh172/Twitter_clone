@@ -4,12 +4,14 @@ import "./styles.css";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import DeleteIcon from "@material-ui/icons/Delete";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
+//https://pbs.twimg.com/profile_images/1423900874955395077/zY6JVdJ-_bigger.jpg
 function DisplayHandler({ value }) {
   return (
-    <div>
+    <div className="content-color">
       <div>
-        <img src="https://pbs.twimg.com/profile_images/879618452989763584/HWV7X21S_bigger.jpg" />
+        <img src="https://pbs.twimg.com/profile_images/1423900874955395077/zY6JVdJ-_bigger.jpg" />
       </div>
       <div>
         <div>{value.name}</div>
@@ -20,18 +22,28 @@ function DisplayHandler({ value }) {
   );
 }
 
-const PostTweet = ({ addTweet }) => {
+const PostTweet = ({ addTweet, removeText }) => {
   const [tweetInput, setTweetInput] = useState("");
-  const clickHandler = () => addTweet(tweetInput);
+  //const clickHandler = () => addTweet(tweetInput);
+  function clickHandler() {
+    addTweet(tweetInput);
+    setTweetInput("");
+  }
+  // const textHandler = () => removeText(tweetInput);
   return (
-    <>
+    <div className="form-group">
       <textarea
+        className="content-text"
         placeholder="Start Twitting"
         value={tweetInput}
         onChange={(e) => setTweetInput(e.target.value)}
       />
-      <button onClick={clickHandler}> Tweet </button>
-    </>
+
+      <span className="icon-user">
+        {" "}
+        <TwitterIcon onClick={clickHandler} />{" "}
+      </span>
+    </div>
   );
 };
 // const RemoveTweet = ({ removeTweet }) => {
@@ -41,15 +53,17 @@ const PostTweet = ({ addTweet }) => {
 //     </>
 //   );
 // };
+//<div className="mr">
+//<button onClick={clickHandler}> Tweet </button>
+//</div>
 
 function Tweet({ data, onLikeChange, activityChecker, deleteHandler }) {
   return (
     <>
-      {console.log(data)}
-      <div className="tweet">
-        <div className="pd">{data.text}</div>
-        <div>{data.like}</div>
-        <div>
+      <div className="tweet ">
+        <div className="pd text-display text-control">{data.text}</div>
+        <div className="mr-1">{data.like}</div>
+        <div className="pd1">
           {activityChecker.some((ti) => ti === data.id) ? (
             <FavoriteIcon
               onClick={() => {
@@ -146,7 +160,7 @@ export default function App() {
     { id: "t2", text: "Second Tweeet", like: 4 }
   ]);
   const [displayDetails, setDisplayDetails] = useState({
-    name: "harsh",
+    name: "Harsh Shah",
     location: "Gandhinagar",
     descrtiption: "A strategic gammer finding his way out to learn how to code!"
   });
@@ -165,6 +179,9 @@ export default function App() {
   //console.log(likedByUser);
   const addNewTweet = (newTweet) => {
     setTweets([...tweets, { id: newTweet, text: newTweet, like: 0 }]);
+  };
+  const removeText = (text) => {
+    setTweets([...tweets]);
   };
   // const likeChangeHandler = () => {
 
@@ -216,16 +233,21 @@ export default function App() {
 
   return (
     <>
-      <DisplayHandler value={displayDetails} />
-      <TweetList
-        tweets={tweets}
-        like={tweets}
-        onLikeChange={likeChangeHandler}
-        activityChecker={likedByUser}
-        deleteHandler={deleteHandler}
-      />
-
-      <PostTweet addTweet={addNewTweet} />
+      <div className="pd-1">
+        <DisplayHandler value={displayDetails} />
+      </div>
+      <div className="pd-1">
+        <TweetList
+          tweets={tweets}
+          like={tweets}
+          onLikeChange={likeChangeHandler}
+          activityChecker={likedByUser}
+          deleteHandler={deleteHandler}
+        />
+      </div>
+      <div className="pd-1">
+        <PostTweet addTweet={addNewTweet} removeText={removeText} />
+      </div>
     </>
   );
 }

@@ -2,6 +2,33 @@
   font-family: sans-serif;
   text-align: center;
 }
+.form-group {
+  position: relative;
+  height: 170px;
+  width: 330px;
+  border: 1px solid black;
+}
+.text-control {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-text {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
+
+  width: 325px;
+  height: 130px;
+}
+
+.icon-user {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
 
 .tweet {
   width: 300px;
@@ -9,7 +36,36 @@
   border: 1px solid lightgrey;
   display: flex;
 }
+.flex {
+  display: flex;
+}
+.pd-1 {
+  padding: 2px;
+}
+.mr {
+  margin-top: 20px;
+  padding: 2px;
+}
+.mr-1 {
+  margin-top: 4px;
+}
+.text-display {
+  width: relative;
+  height: relative;
+}
+.containt {
+  width: 50px;
+  height: 10px;
+}
 
 .pd {
-  padding-right: 10px;
+  margin-right: auto;
+}
+
+.pd1 {
+  padding-right: 2px;
+}
+
+.content-color {
+  background-color: #1da1f2;
 }
